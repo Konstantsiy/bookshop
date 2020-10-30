@@ -1,18 +1,18 @@
-Software Requirements Specifications (SRS) for Bookstore
+Software Requirements Specifications (SRS) for Bookshop
 ***version 1.0.0***
 # 1. Introduction
 ## 1.1 Purpose
 A store where you can search and buy books through PayPal payment system.
 ## 1.2 Scope
-The objective of this project is to create and implement a website bookstore. The website will allow users to create and maintain individual secured accounts, search the      Bookstore database for textbooks, and make secured online credit card purchases. Users will be able to search for the required books by various characteristics. 
+The objective of this project is to create and implement a website bookstore. The website will allow users to create and maintain individual secured accounts, search the      Bookshop database for textbooks, and make secured online credit card purchases. Users will be able to search for the required books by various characteristics. 
 # 2. Overall Description
 ## 2.1 Product Respective
-The bookstore is not a component of a larger system, it is a self-powered product.
-The bookstore system will interact with the credit card processing system to process purchases on the site. The system will also interact with a bookstore inventory database that records the number of books available sold in inventory.
+The bookshop is not a component of a larger system, it is a self-powered product.
+The bookshop system will interact with the credit card processing system to process purchases on the site. The system will also interact with a bookstore inventory database that records the number of books available sold in inventory.
 
 ![alt text](https://github.com/Konstantsiy/bookshop/blob/master/docs/system.png)
 ## 2.2. Product Features
-The following list of function descriptions explains the major features of the Online Bookstore:
+The following list of function descriptions explains the major features of the Online Bookshop:
 - Account registration.
 - Account login.
 - Search for books.
@@ -21,7 +21,7 @@ The following list of function descriptions explains the major features of the O
 - Delete from shopping cart.
 - Account logout.
 ## 2.3. Operating Environment
-Bookstore will primarily act as a web service that will be supported on web browsers including Google Chrome and Firefox 18. Underlying operating system is Windows or Linux.
+Bookshop will primarily act as a web service that will be supported on web browsers including Google Chrome and Firefox 18. Underlying operating system is Windows or Linux.
 Bookstore will be running on local host that has [Django](https://www.djangoproject.com/download/), [Python 3.8](https://www.python.org/downloads/), and [MySQL](https://dev.mysql.com/downloads/) running on it.
 # 3. Requirement Specifications 
 ## 3.1 User Requirements
@@ -32,7 +32,7 @@ The performance requirements are as follows:
 - Searches shall return results within 10 seconds.
 - Orders shall be processed within 10 seconds.
 ## 3.3 Design Constraints
-The Bookstore shall conform to the following design constraints:
+The Bookshop shall conform to the following design constraints:
 - Able to support PC platform.
 - System supports all web browsers.
 ## 3.4 Security
