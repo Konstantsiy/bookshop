@@ -24,7 +24,7 @@ def get_cart_items_count(request):
 
 def about(request):
     count = get_cart_items_count(request)
-    return render(request, 'main/about.html', {'cart_items_count': count})
+    return render(request, 'home/about.html', {'cart_items_count': count})
 
 
 class GenreAuthor:
@@ -40,7 +40,7 @@ class GenreAuthor:
 class BookView(GenreAuthor, ListView):
     model = Book
     queryset = Book.objects.filter(draft=False)
-    template_name = 'main/home.html'
+    template_name = 'home/home.html'
 
     # paginate_by = 2
 

@@ -1,0 +1,592 @@
+/* --------------------navbar menu------------------ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Rancho", cursive;
+  }
+
+  .menu {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(110, 58, 58, 0.432);
+    box-shadow: 0 2px 5px rgb(177, 67, 67);
+    box-sizing: border-box;
+    /* margin: 0;
+      padding: 0; */
+  }
+
+  .for-book-view {
+    width: 100%;
+    height: 100vh;
+    background: url('/static/images/pictures/header.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .for-home {
+    width: 100%;
+    height: 100vh;
+    background: url('/static/images/pictures/header.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .menu .logo {
+    float: left;
+    width: 48px;
+    color: #fff;
+    font-size: 40px;
+  }
+
+  nav {
+    position: relative;
+    float: right;
+  }
+
+  nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  nav ul li {
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  nav ul li a {
+    /* display: block; */
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 33px 20px;
+    text-decoration: none;
+  }
+
+  nav ul li ul {
+    display: block;
+    background: #1818183b;
+    min-width: 250px;
+    position: absolute;
+    margin-top: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.719);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    transform: translateY(70px);
+  }
+
+  nav ul li:hover ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(4px);
+  }
+
+  nav ul li ul li a {
+    padding: 10px;
+  }
+
+  nav ul li a:hover {
+    background: red;
+    color: #fff;
+  }
+  /* --------------------navbar menu------------------ */
+  /* --------------------search box------------------ */
+  /* .search-box {
+      position: absolute;
+      left: 40%;
+      transform: translate(-0%, -50%);
+      height: 20px;
+      width: 200px;
+      background: rgb(255, 0, 0);
+      padding: 10px;
+      border-radius: 50px;
+  }
+  .search-btn {
+      height: 20px;
+      width: 20px;
+      border-radius: 50px;
+      background-color: #fff;
+      position: absolute;
+      right: 5px;
+      display: flex;
+      justify-content: center;
+  } */
+  /* --------------------search box------------------ */
+  /* --------------------author info------------------ */
+  .popup-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    height: 8vh;
+    position: relative;
+    left: -60px;
+  }
+
+  .popup-button {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 599;
+    text-transform: uppercase;
+    display: inline-block;
+    border-radius: 1.5rem;
+    background-color: #a0c0ff;
+    color: black;
+    padding: 1rem 2rem;
+  }
+
+  .popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 120vw;
+    height: 120vh;
+    /* bottom: -40;
+    right: 50; */
+    background-color: rgba(0, 0, 0, 0.719);
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.74s ease-in-out;
+  }
+
+  .popup-inner {
+    position: relative;
+    bottom: -100vw;
+    right: -100vh;
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    max-height: 599px;
+    /* width: 80%;
+    height: 100%; */
+    background-color: white;
+    transform: rotate(32deg);
+    transition: 0.74s ease-in-out;
+  }
+
+  .popup-photo {
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    width: 500px;
+    height: 600px;
+    background-image: url('/static/images/authors/MP-Stephen_King.png');
+    background-size: cover;
+    background-position: -60px;
+    /* background-color: rgb(255, 0, 0); */
+    /* overflow: hidden; */
+  }
+
+  /* .popup-photo img {
+    background-size: cover;
+    width: 80%;
+    height: 80%;
+  } */
+
+  .popup-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 59%;
+    height: 100%;
+    padding: 4rem;
+  }
+
+  .popup-text h2 {
+    font-size: 2rem;
+    font-weight: 599;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+
+  .popup-text p {
+    font-size: 0.875rem;
+    color: black;
+    line-height: 1.5;
+  }
+
+  .popup:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .popup:target .popup-inner {
+    bottom: 0;
+    right: 0;
+    transform: rotate(0);
+  }
+
+  .popup-close {
+    position: absolute;
+    right: -1.5rem;
+    top: -1.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 0.875rem;
+    font-size: 400;
+    border-radius: 100%;
+    background-color: rgb(43, 59, 105);
+    z-index: 4;
+    color: #fff;
+    line-height: 3rem;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  /* --------------------author info------------------ */
+  /* --------------------book detail------------------ */
+  .intro {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    position: relative;
+    left: 100px;
+    top: 40px;
+  }
+
+  .content-part {
+    display: inline-block;
+  }
+
+  .intro-text {
+    background-color: rgb(255, 213, 213);
+    position: relative;
+    bottom: 460px;
+    left: 70px;
+    opacity: 0;
+    /* background-color: rgb(255, 155, 155); */
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 3px rgba(117, 115, 115, 0.918);
+    transform: translateY(40px);
+    transition: 0.5s all ease-in-out;
+  }
+
+  .intro-img {
+    transform: translateY(80px);
+    opacity: 0;
+    transition: 0.5s all ease-in-out;
+  }
+
+  .intro-desc {
+    background-color: rgb(255, 213, 213);
+    border-radius: 10px;
+    position: relative;
+    bottom: 400px;
+    left: 645px;
+    box-shadow: 5px 5px 10px 3px rgba(117, 115, 115, 0.918);
+    transform: translateY(40px);
+    width: 1000px;
+    height: 400px;
+    opacity: 0;
+    transition: 0.9s all ease-in-out;
+  }
+
+  .intro-appear {
+    opacity: 1;
+    transform: translateY(-40px);
+  }
+
+  .intro-content img {
+    width: 30%;
+    height: 30%;
+    border-radius: 20px;
+  }
+
+  .intro-desc .desc-text {
+    width: 90%;
+    font-size: 20px;
+    margin: 20px;
+  }
+  /* --------------------book detail------------------ */
+  /* --------------------book list------------------ */
+  .container-book-list {
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .container-book {
+    width: 200px;
+    height: 270px;
+    background-color: rgb(255, 225, 225);
+    transition: 0.5s;
+    margin: 50px;
+  }
+
+  .container-book .container-book-img {
+    /* width: 260px;
+      height: 260px; */
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    left: 11px;
+    top: -30px;
+    z-index: 1;
+  }
+
+  .container-book .container-book-img img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .container-book .container-book-content {
+    width: 100%;
+    text-align: center;
+    padding: 1px;
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+
+  .container-book:hover {
+    height: 360px;
+  }
+
+  .container-book-content p {
+    margin-top: -10px;
+    border-color: rgba(0, 0, 0, 0.719);
+    border-radius: 2px;
+  }
+
+  .container-book .container-book-content button {
+    margin-top: -10px;
+    border-radius: 10px;
+    height: 30px;
+    width: 120px;
+    font-size: 18px;
+    background: rgba(255, 118, 118, 0.705);
+    color: seashell;
+    border: none;
+    transition: 0.3s ease;
+  }
+
+  .container-book .container-book-content button:hover {
+    transform: scale(0.9);
+    background: rgb(255, 38, 38);
+  }
+
+  .container-book:hover .container-book-content {
+    opacity: 1;
+    transform: translateY(-50px);
+    transition: 0.5s;
+  }
+  /* --------------------book list------------------ */
+  /* --------------------footer------------------ */
+  footer {
+    background: url('/static/images/pictures/footer.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+
+  .footer-content {
+    margin-left: 40px;
+  }
+
+  .footer-section-links {
+    position: relative;
+    bottom: 90px;
+  }
+
+  .text1 {
+    position: relative;
+    color: rgba(0, 0, 0, 0.719);
+    opacity: 1;
+    animation: text 3s 1;
+  }
+  .text2 {
+    opacity: 1;
+  }
+  @keyframes text {
+    0% {
+      opacity: 0;
+      margin-bottom: -40px;
+    }
+    85% {
+      opacity: 1;
+      margin-bottom: 0px;
+    }
+  }
+  /* --------------------footer------------------ */
+  /* --------------------social links------------------ */
+  .links-wrapper {
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  .links-wrapper .link-button {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin: 0px 5px;
+    /* float: left; */
+    background: rgba(255, 133, 133, 0.719);
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+  }
+
+  .links-wrapper .link-button:hover {
+    width: 170px;
+  }
+
+  .links-wrapper .link-button .icon {
+    position: relative;
+    margin-left: 7px;
+  }
+
+  .links-wrapper .link-button .icon i {
+    font-size: 25px;
+    line-height: 45px;
+  }
+
+  .links-wrapper .link-button span {
+    letter-spacing: 7px;
+    font-size: 20px;
+    font-weight: 50px;
+    font-weight: 60px;
+    margin-left: 10px;
+  }
+
+  .footer-content-comment {
+    position: relative;
+    left: 650px;
+    top: -100px;
+    letter-spacing: 7px;
+  }
+
+  .footer-content-comment p {
+    font-size: 20px;
+  }
+  /* --------------------social links------------------ */
+  /* --------------------about page------------------ */
+  .about-content img {
+    position: relative;
+    z-index: -2;
+    height: 700px;
+  }
+
+  .quote {
+    font-family: 'Dancing Script', cursive;
+    position: relative;
+    margin-left: 1100px;
+    bottom: 600px;
+  }
+
+  .quote .quote-text {
+    font-size: 40px;
+    animation-duration: 4s;
+    animation-name: quote-text-intro;
+  }
+
+  @keyframes quote-text-intro {
+    from {
+      margin-top: 20%;
+      opacity: 0;
+    }
+    to {
+      margin-top: 0%;
+      opacity: 1;
+    }
+  }
+
+  .quote .quote-author {
+    position: relative;
+    margin-left: 560px;
+    top: 20px;
+    font-size: 50px;
+
+    animation: quote-author-intro 5s;
+  }
+
+  @keyframes quote-author-intro {
+    0%{
+      opacity: 0;
+    }
+    59% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .info1-container {
+    position: relative;
+    margin-left: 1050px;
+    bottom: 450px;
+    /* background-color: rgb(255, 185, 185); */
+    width: 830px;
+    height: 210px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 3px rgba(117, 115, 115, 0.918);
+    background: linear-gradient(-45deg, #ffe9f4, #9931a7, #ffa8de, #a483ff);
+	  background-size: 400% 400%;
+	  animation: gradient1 15s ease infinite;
+  }
+
+  .info1 {
+    font-family: 'Sansita Swashed', cursive;
+    width: 800px;
+    font-size: 20px;
+    margin: 20px;
+    margin-top: 20px;
+    font-weight: lighter;
+    color: white;
+  }
+
+  .info2-container {
+    position: relative;
+    margin-left: 70px;
+    bottom: 424px;
+    /* background-color: rgb(166, 182, 255); */
+    width: 1100px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 3px rgba(117, 115, 115, 0.918);
+    background: linear-gradient(-45deg, #da7cff, #418fbd, #91e2ff, #e924df);
+	  background-size: 400% 400%;
+	  animation: gradient2 15s ease infinite;
+  }
+
+  @keyframes gradient1 {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes gradient2 {
+    0% {
+      background-position: 0% 60%;
+    }
+    50% {
+      background-position: 100% 30%;
+    }
+    100% {
+      background-position: 0% 80%;
+    }
+  }
+
+  .info2 {
+    width: 1050px;
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 20px;
+    margin: 20px;
+    margin-top: 20px;
+    font-weight: lighter;
+    color: white;
+  }
+  /* --------------------about page------------------ */
