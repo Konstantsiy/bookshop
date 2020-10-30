@@ -10,7 +10,7 @@ The objective of this project is to create and implement a website bookstore. Th
 The bookstore is not a component of a larger system, it is a self-powered product.
 The bookstore system will interact with the credit card processing system to process purchases on the site. The system will also interact with a bookstore inventory database that records the number of books available sold in inventory.
 
-![alt text](https://github.com/Konstantsiy/bookstore/blob/master/docs/system.png)
+![alt text](https://github.com/Konstantsiy/bookshop/blob/master/docs/system.png)
 ## 2.2. Product Features
 The following list of function descriptions explains the major features of the Online Bookstore:
 - Account registration.
