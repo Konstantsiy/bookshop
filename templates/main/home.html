@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}home{% endblock title %}
+{% block content %}
+    <div class="main-container">
+            <section class="for-home"></section>
+            <div class="search-text" style="  font-family: 'Permanent Marker', cursive;">
+                Where are the books, Lebowski?
+            </div>
+            <form action="" style="position: relative; top: 40px;">
+                <label>
+                    <input type="search">
+                </label>
+                <i class="fa fa-search"></i>
+            </form>
+            <div class="container-book-list">
+                {% for book in book_list %}
+                    <div class="container-book">
+                        <div class="container-book-img">
+                            <img src="{{ book.image.url }}" alt="">
+                        </div>
+                        <div class="container-book-content">
+                            <h2>{{ book.title }}</h2>
+                            <p>{{ book.price }} $</p>
+                            <a href="{{ book.get_absolute_url }}"><button class="view-button">View</button></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock content %}

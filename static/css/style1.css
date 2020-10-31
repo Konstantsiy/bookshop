@@ -175,7 +175,7 @@ body {
     align-content: flex-end;
     width: 500px;
     height: 600px;
-    background-image: url('/static/images/authors/MP-Stephen_King.png');
+    /*background-image: url('/static/images/authors/MP-Stephen_King.png');*/
     background-size: cover;
     background-position: -60px;
     /* background-color: rgb(255, 0, 0); */
@@ -533,8 +533,8 @@ body {
   }
 
   .info1 {
-    font-family: 'Sansita Swashed', cursive;
     width: 800px;
+    font-family: 'Antic Slab', serif;
     font-size: 20px;
     margin: 20px;
     margin-top: 20px;
@@ -582,7 +582,7 @@ body {
 
   .info2 {
     width: 1050px;
-    font-family: 'Sansita Swashed', cursive;
+    font-family: 'Antic Slab', serif;
     font-size: 20px;
     margin: 20px;
     margin-top: 20px;
@@ -590,3 +590,71 @@ body {
     color: white;
   }
   /* --------------------about page------------------ */
+  /* --------------------search form------------------ */
+.search-text {
+  font-family: 'Permanent Marker', cursive;
+   color: rgb(255, 151, 151);
+   justify-content: center;
+   text-align: center;
+   font-size: 40px;
+}
+
+  form{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid rgb(255, 213, 213);
+    padding: 5px;
+}
+
+input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: rgb(255, 213, 213);
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+form:hover{
+    width: 400px;
+    cursor: pointer;
+}
+
+form:hover input{
+    display: block;
+}
+
+form:hover .fa{
+    background: rgb(255, 213, 213);
+    color: white;
+}
+  /* --------------------search form------------------ */

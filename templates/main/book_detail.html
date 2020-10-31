@@ -1,41 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}book_url{% endblock title %}
+{% block title %}{{ book.title }}{% endblock title %}
 {% block content %}
     <div class="container-parallax">
         <section class="for-book-view"></section>
         <div class="intro">
             <div class="intro-content">
-                <img src="/static/images/books/it.jpg" alt="" class="intro-img content-part">
+                <img src="{{ book.image.url }}" alt="" class="intro-img content-part">
                 <div class="intro-text content-part">
-                    <p><span style="font-weight: bold; position: relative; left: 10px;">IT</span></p>
+                    <p><span style="font-weight: bold; position: relative; left: 10px;">{{ book.title }}</span></p>
                     <div class="popup-container">
                         <p><span style="position: relative; left: 10px;">Author: </span>
-                            <a href="#popup" class="popup-button" style="position: relative; left: 20px;">Stephen King</a>
+                            <a href="#popup" class="popup-button" style="position: relative; left: 20px;">{{ book.author.first.name }}</a>
                         </p>
                         <div class="popup" id="popup">
                             <div class="popup-inner">
-                                <div class="popup-photo">
+                                <div class="popup-photo" style="background-image: {{ book.author.first.image.url }};">
                                     <!-- <img src="images/MP-Stephen_King.png" alt=""> -->
                                 </div>
                                 <div class="popup-text">
-                                    <h2>Stephen King Biography</h2>
-                                    <p>Author Stephen Edwin King was born on September 21, 1947, in Portland, Maine.
-                                        King is recognized as one of the most famous and successful horror writers of all time.
-                                        His parents, Donald and Nellie Ruth Pillsbury King, split up when he was very young,
-                                        and he and his brother David divided their time between Indiana and Connecticut for
-                                        several years. King later moved back to Maine with his mother and brother.
-                                        There he graduated from Lisbon Falls High School in 1966.
-
-                                        King stayed close to home for college, attending the University of Maine at Orono.
-                                        There he wrote for the school's newspaper and served in its student government.
-                                        While in school, King published his first short story,
-                                        which appeared in Startling Mystery Stories.
-                                        After graduating with a degree in English in 1970,
-                                        he tried to find a position as a teacher but had no luck at first.
-                                        King took a job in a laundry and continued to write stories in his spare time
-                                        until late 1971, when he began working as an English educator at Hampden Academy.
-                                        It was that year that he also married fellow writer Tabitha Spruce.</p>
+                                    <h2>{{ book.author.first.name }} Biography</h2>
+                                    <p>{{ book.author.first.biography }}</p>
+{#                                    <p>Author Stephen Edwin King was born on September 21, 1947, in Portland, Maine.#}
+{#                                        King is recognized as one of the most famous and successful horror writers of all time.#}
+{#                                        His parents, Donald and Nellie Ruth Pillsbury King, split up when he was very young,#}
+{#                                        and he and his brother David divided their time between Indiana and Connecticut for#}
+{#                                        several years. King later moved back to Maine with his mother and brother.#}
+{#                                        There he graduated from Lisbon Falls High School in 1966.#}
+{##}
+{#                                        King stayed close to home for college, attending the University of Maine at Orono.#}
+{#                                        There he wrote for the school's newspaper and served in its student government.#}
+{#                                        While in school, King published his first short story,#}
+{#                                        which appeared in Startling Mystery Stories.#}
+{#                                        After graduating with a degree in English in 1970,#}
+{#                                        he tried to find a position as a teacher but had no luck at first.#}
+{#                                        King took a job in a laundry and continued to write stories in his spare time#}
+{#                                        until late 1971, when he began working as an English educator at Hampden Academy.#}
+{#                                        It was that year that he also married fellow writer Tabitha Spruce.</p>#}
                                 </div>
                             <a class="popup-close" href="#" style="font-size: 0.95rem">X</a>
                             </div>
@@ -62,5 +63,5 @@
                 </div>
             </div>
         </div>
-    </div>l
+    </div>
 {% endblock content %}

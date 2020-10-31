@@ -1,7 +1,6 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db.models import Q
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.base import View
@@ -23,8 +22,8 @@ def get_cart_items_count(request):
 
 
 def about(request):
-    count = get_cart_items_count(request)
-    return render(request, 'home/about.html', {'cart_items_count': count})
+    # count = get_cart_items_count(request)
+    return render(request, 'main/about.html')
 
 
 class GenreAuthor:
@@ -40,7 +39,7 @@ class GenreAuthor:
 class BookView(GenreAuthor, ListView):
     model = Book
     queryset = Book.objects.filter(draft=False)
-    template_name = 'home/home.html'
+    template_name = 'main/home.html'
 
     # paginate_by = 2
 
@@ -60,6 +59,7 @@ class BookDetailView(GenreAuthor, DetailView):
 
 
 class AddReview(GenreAuthor, View):
+
     def post(self, request, pk):
         form = ReviewForm(request.POST)
         book = Book.objects.get(id=pk)

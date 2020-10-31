@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>about</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style1.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Rancho&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Dancing+Script:wght@600&family=Sansita+Swashed:wght@600&display=swap" rel="stylesheet">
@@ -14,24 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Dancing+Script:wght@600&family=Ranchers&family=Sansita+Swashed:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="menu" data-z-index="0">
-        <div class="logo">BOOKSHOP</div>
-        <nav>
-            <ul>
-                <li><a href="#">GENRES</a>
-                    <ul>
-                        <li><a href="#">Fiction</a></li>
-                        <li><a href="#">Horror</a></li>
-                        <li><a href="#">Fantastic</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">CART</a></li>
-                <li><a href="#">LOG IN</a></li>
-            </ul>
-        </nav>
-    </div>
+    {% include 'include/menu.html' %}
     <div class="about-content">
         <img src="/static/images/pictures/about.png" alt="">
         <div class="quote">

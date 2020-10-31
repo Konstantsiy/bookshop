@@ -30,11 +30,11 @@ class Author(models.Model):
 
 
 class Genre(models.Model):
-    name = models.CharField('Genre', max_length=150)
+    title = models.CharField('Genre', max_length=150)
     url = models.SlugField(max_length=60, unique=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = 'Genre'
