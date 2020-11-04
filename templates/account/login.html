@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Log-In</title>
+    <link rel="stylesheet" href="/static/css/style_for_account.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+      <img src="/static/images/pictures/sign.jpg" alt="" class="search-image">
+      <form id="login-form" action="{% url 'django.contrib.auth.views.login' %}" method="post"  class="login-form">
+        {% csrf_token %}
+        <h1>Login</h1>
+        <div class="txtb">
+            <label for="id_username"><input id="id_username" type="text"></label>
+            <span data-placeholder=""></span>
+        </div>
+        <div class="txtb">
+            <label for="id_password"><input id="id_password" type="password"></label>
+            <span data-placeholder=""></span>
+        </div>
+          {% if form.errors %}
+              <p>Your username or password didn't match.</p>
+              <p>Please try again.</p>
+          {% endif %}
+{#        <button type="submit" class="logbtn">Login</button>#}
+        <input type="submit" class="logbtn" value="Login">
+        <div class="bottom-text">Don't have an account? <a href="{% url 'registration' %}">Sign up</a></div>
+      </form>
+
+      <script type="text/javascript">
+      $(".txtb label input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb label input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+      </script>
+
+  </body>
+</html>

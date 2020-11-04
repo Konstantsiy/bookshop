@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load book_tag %}
 {% load static %}
 {% block title %}home{% endblock title %}
 {% block content %}
@@ -7,11 +8,11 @@
             <div class="search-text" style="  font-family: 'Permanent Marker', cursive;">
                 Where are the books, Lebowski?
             </div>
-            <form action="" style="position: relative; top: 40px;">
+            <form action="{% url 'search' %}" method="get" style="position: relative; top: 40px;">
                 <label>
-                    <input type="search">
+                    <input type="search" name="q">
                 </label>
-                <i class="fa fa-search"></i>
+                <button class="fa fa-search" type="submit" style="outline: none; border: 0; color: white;"></button>
             </form>
             <div class="container-book-list">
                 {% for book in book_list %}

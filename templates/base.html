@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="/static/css/style1.css">
+    <link rel="stylesheet" href="/static/css/style1.css?{% now "U" %}">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Rancho&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Krub:wght@200&family=Rancho&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
 </head>
 <body>
 {% include 'include/menu.html' %}
@@ -18,7 +20,5 @@
 {% endblock content %}
 {% include 'include/footer.html' %}
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/static/js/parallax.js"></script>
 <script src="/static/js/appear.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>

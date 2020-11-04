@@ -4,5 +4,11 @@ from . import views
 urlpatterns = [
     path('', views.BookView.as_view(), name='main'),
     path('about/', views.about, name='about'),
+    path('search/', views.Search.as_view(), name='search'),
+    path('login/', views.LoginFormView.as_view(), name='login'),
+    path('logout/', views.logoutView, name='logout'),
+    path('registration/', views.RegisterFormView.as_view(), name='registration'),
+    path('filter/<slug:slug>/', views.filter_by_genre, name='filter'),
     path('<slug:slug>/', views.BookDetailView.as_view(), name='book_detail'),
+    path('add_to_cart/<slug:slug>/', views.AddToCartView.as_view(), name='add_to_cart'),
 ]

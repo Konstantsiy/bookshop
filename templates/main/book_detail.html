@@ -1,64 +1,53 @@
 {% extends 'base.html' %}
+{% load book_tag %}
 {% load static %}
 {% block title %}{{ book.title }}{% endblock title %}
 {% block content %}
     <div class="container-parallax">
         <section class="for-book-view"></section>
         <div class="intro">
-            <div class="intro-content">
+            <div class="intro-content" style="margin-bottom: 80px">
                 <img src="{{ book.image.url }}" alt="" class="intro-img content-part">
                 <div class="intro-text content-part">
                     <p><span style="font-weight: bold; position: relative; left: 10px;">{{ book.title }}</span></p>
                     <div class="popup-container">
-                        <p><span style="position: relative; left: 10px;">Author: </span>
-                            <a href="#popup" class="popup-button" style="position: relative; left: 20px;">{{ book.author.first.name }}</a>
-                        </p>
+                        <ul style="list-style: none; position: relative; left: 10px;">
+                            <li style="display: inline; margin-right: 30px;">Author: </li>
+                            {% for a in book.author.all %}
+                                <li style="display: inline;">
+                                    <a href="#popup" class="popup-button">{{ a.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                         <div class="popup" id="popup">
                             <div class="popup-inner">
-                                <div class="popup-photo" style="background-image: {{ book.author.first.image.url }};">
-                                    <!-- <img src="images/MP-Stephen_King.png" alt=""> -->
-                                </div>
+                                <div class="popup-photo" style="background-image: url({{ book.author.first.image.url }});"></div>
                                 <div class="popup-text">
                                     <h2>{{ book.author.first.name }} Biography</h2>
                                     <p>{{ book.author.first.biography }}</p>
-{#                                    <p>Author Stephen Edwin King was born on September 21, 1947, in Portland, Maine.#}
-{#                                        King is recognized as one of the most famous and successful horror writers of all time.#}
-{#                                        His parents, Donald and Nellie Ruth Pillsbury King, split up when he was very young,#}
-{#                                        and he and his brother David divided their time between Indiana and Connecticut for#}
-{#                                        several years. King later moved back to Maine with his mother and brother.#}
-{#                                        There he graduated from Lisbon Falls High School in 1966.#}
-{##}
-{#                                        King stayed close to home for college, attending the University of Maine at Orono.#}
-{#                                        There he wrote for the school's newspaper and served in its student government.#}
-{#                                        While in school, King published his first short story,#}
-{#                                        which appeared in Startling Mystery Stories.#}
-{#                                        After graduating with a degree in English in 1970,#}
-{#                                        he tried to find a position as a teacher but had no luck at first.#}
-{#                                        King took a job in a laundry and continued to write stories in his spare time#}
-{#                                        until late 1971, when he began working as an English educator at Hampden Academy.#}
-{#                                        It was that year that he also married fellow writer Tabitha Spruce.</p>#}
                                 </div>
                             <a class="popup-close" href="#" style="font-size: 0.95rem">X</a>
                             </div>
                         </div>
                     </div>
-                    <p><span style="position: relative; left: 10px;">Year: 1986</span></p>
-                    <p><span style="position: relative; left: 10px;">Size: 1,138</span></p>
-                    <p><span style="position: relative; left: 10px;">Price: 30.99 $</span></p>
-                    <p><span style="position: relative; left: 10px;">Cover type: hard cover</span></p>
+                    <ul style="list-style: none; position:relative; left: -30px;">
+                            <li style="display: inline; margin-right: 40px;">Genre: </li>
+                            {% for g in book.genre.all %}
+                                <li style="display: inline; margin-right: 1px; font-size: 0.875rem; font-weight: 599;
+                                text-transform: uppercase; background-color: rgb(249, 207, 201);
+                                padding: 1rem 2rem; border-radius: 1.5rem;">{{ g.title }}</li>
+                            {% endfor %}
+                    </ul>
+                    <p><span style="position: relative; left: 10px;">Year: {{ book.year }}</span></p>
+                    <p><span style="position: relative; left: 10px;">Size: {{ book.size }} pages</span></p>
+                    <p><span style="position: relative; left: 10px;">Price: {{ book.price }} $</span></p>
+                    <p><span style="position: relative; left: 10px;">Cover type: {{ book.cover }}</span></p>
+                    <a href="{% url 'add_to_cart' slug=book.url %}" class="btn btn-color btn-animation-1">Add to Cart</a>
                 </div>
                 <div class="intro-desc">
-                    <p><span style="text-transform: uppercase; font-weight: bold; margin: 20px;">About a book</span></p>
+                    <p><span style="text-transform: uppercase; font-weight: bold; margin: 380px;">About a book</span></p>
                     <div class="desc-text-container">
-                        <p class="desc-text">IT is the 22nd book published by Stephen King. It was his 18th novel,
-                            and the 13th novel written under his own name.
-                            The book was released by Viking on September 15, 1986.
-                            It was one of the best selling novels in the United States of that yeard
-                            and is now considered a "modern masterpiece" of the horror genre in literature.
-                            Since the book's publication King's story has been adapted several times for TV and film.
-                            In 1990, Tommy Lee Wallace directed a two-part miniseries starring Tim Curry.
-                            In 2017, Andy Muschietti directed the 2017 film adaptation, and its sequel, Chapter Two, in 2019.
-                        </p>
+                        <p class="desc-text">{{ book.description }}</p>
                     </div>
                 </div>
             </div>

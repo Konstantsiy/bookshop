@@ -5,10 +5,10 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.base import View
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from .models import Book, Author, Genre, Order, OrderItem, Customer
-from .forms import ReviewForm
+from .forms import ReviewForm, LoginForm
 
 
 def get_cart_items_count(request):
@@ -24,6 +24,30 @@ def get_cart_items_count(request):
 def about(request):
     # count = get_cart_items_count(request)
     return render(request, 'main/about.html')
+
+
+def filter_by_genre(request, slug):
+    queryset = Book.objects.filter(genre__url=slug)
+    return render(request, 'main/home.html', {'book_list': queryset})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse('Authenticated successfully')
+                else:
+                    return HttpResponse('Disabled account')
+            else:
+                return HttpResponse('Invalid login')
+    else:
+        form = LoginForm()
+    return render(request, 'account/login.html', {'form': form})
 
 
 class GenreAuthor:
@@ -80,16 +104,26 @@ class AuthorView(DetailView):
 class FilterBooksView(GenreAuthor, ListView):
     # paginate_by = 2
 
-    def get_queryset(self):
-        queryset = Book.objects.filter(
-            Q(author__in=self.request.GET.getlist("author")) |
-            Q(genre__in=self.request.GET.getlist("genre"))
-        )
-        return queryset
+    slug_field = 'url'
+    queryset = Book.objects.filter(genre__url=slug_field)
+    template_name = 'main/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+    # def get_queryset(self):
+    #     queryset = Book.objects.filter(
+    #         # Q(author__in=self.request.GET.getlist("slug")) |
+    #         Q(genre__in=self.request.GET.getlist("slug"))
+    #     )
+    #     print(queryset)
+    #     return queryset
 
 
 class Search(ListView):
     paginate_by = 2
+    template_name = 'main/home.html'
 
     def get_queryset(self):
         return Book.objects.filter(title__icontains=self.request.GET.get('q'))
@@ -165,7 +199,7 @@ class DeleteFromCartView(View):
 class RegisterFormView(FormView):
     form_class = UserCreationForm
     success_url = "/login/"
-    template_name = "main/registration.html"
+    template_name = "account/registration.html"
 
     def form_valid(self, form):
         form.save()
@@ -174,7 +208,7 @@ class RegisterFormView(FormView):
 
 class LoginFormView(FormView):
     form_class = AuthenticationForm
-    template_name = "main/login.html"
+    template_name = "account/login.html"
     success_url = "/"
 
     def form_valid(self, form):
@@ -186,31 +220,3 @@ class LoginFormView(FormView):
 def logoutView(request):
     logout(request)
     return HttpResponseRedirect('/')
-
-# def registrationView(request):
-#     if request.method == 'POST':
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             # form.save()
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#             return render(request, 'main/login.html')
-#     else:
-#         form = UserCreationForm
-#     return render(request, 'main/registration.html', {'form': form})
-#
-#
-# def loginView(request):
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#
-#             user = authenticate(username=username, password=password)
-#             login(request, user)
-#
-#             return render(request, '/')
-#     else:
-#         form = LoginForm
-#     return render(request, 'main/login.html', {'form': form})

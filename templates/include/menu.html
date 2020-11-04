@@ -7,14 +7,18 @@
             <li><a href="#">GENRES</a>
                 <ul>
                     {% for genre in view.get_genres %}
-                        <li><a href="#">{{ genre.title }}</a></li>
+                        <li><a href="{% url 'filter' genre.url %}">{{ genre.title }}</a></li>
                     {% endfor %}
                 </ul>
             </li>
             <li><a href="/">HOME</a></li>
             <li><a href="{% url 'about' %}">ABOUT</a></li>
             <li><a href="#">CART</a></li>
-            <li><a href="#">LOG IN</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">LOG OUT</a></li>
+            {% else %}
+                    <li><a href="{% url 'login' %}">LOG IN</a></li>
+            {% endif %}
         </ul>
     </nav>
 </div>

@@ -92,37 +92,14 @@ body {
     color: #fff;
   }
   /* --------------------navbar menu------------------ */
-  /* --------------------search box------------------ */
-  /* .search-box {
-      position: absolute;
-      left: 40%;
-      transform: translate(-0%, -50%);
-      height: 20px;
-      width: 200px;
-      background: rgb(255, 0, 0);
-      padding: 10px;
-      border-radius: 50px;
-  }
-  .search-btn {
-      height: 20px;
-      width: 20px;
-      border-radius: 50px;
-      background-color: #fff;
-      position: absolute;
-      right: 5px;
-      display: flex;
-      justify-content: center;
-  } */
-  /* --------------------search box------------------ */
   /* --------------------author info------------------ */
   .popup-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 20vw;
-    height: 8vh;
-    position: relative;
-    left: -60px;
+    /*justify-content: center;*/
+    height: 4vh;
+    margin-left: -37px;
+    margin-top: 60px;
   }
 
   .popup-button {
@@ -143,9 +120,9 @@ body {
     justify-content: center;
     position: fixed;
     width: 120vw;
+    left: -1200px;
     height: 120vh;
-    /* bottom: -40;
-    right: 50; */
+    margin-right: 340px;
     background-color: rgba(0, 0, 0, 0.719);
     z-index: 2;
     visibility: hidden;
@@ -175,18 +152,9 @@ body {
     align-content: flex-end;
     width: 500px;
     height: 600px;
-    /*background-image: url('/static/images/authors/MP-Stephen_King.png');*/
     background-size: cover;
     background-position: -60px;
-    /* background-color: rgb(255, 0, 0); */
-    /* overflow: hidden; */
   }
-
-  /* .popup-photo img {
-    background-size: cover;
-    width: 80%;
-    height: 80%;
-  } */
 
   .popup-text {
     display: flex;
@@ -207,7 +175,7 @@ body {
   .popup-text p {
     font-size: 0.875rem;
     color: black;
-    line-height: 1.5;
+    /* line-height: 0.5; */
   }
 
   .popup:target {
@@ -228,7 +196,6 @@ body {
     width: 3rem;
     height: 3rem;
     font-size: 0.875rem;
-    font-size: 400;
     border-radius: 100%;
     background-color: rgb(43, 59, 105);
     z-index: 4;
@@ -245,7 +212,7 @@ body {
     font-size: 25px;
     position: relative;
     left: 100px;
-    top: 40px;
+    top: 60px;
   }
 
   .content-part {
@@ -253,31 +220,32 @@ body {
   }
 
   .intro-text {
-    background-color: rgb(255, 213, 213);
+    /* background-color: rgb(255, 213, 213); */
     position: relative;
-    bottom: 460px;
-    left: 70px;
+    bottom: 80px;
+    left: 80px;
     opacity: 0;
+    /*text-align: center;*/
+    /*justify-content: center;*/
     /* background-color: rgb(255, 155, 155); */
     border-radius: 5px;
-    box-shadow: 5px 5px 10px 3px rgba(117, 115, 115, 0.918);
+    /* box-shadow: 5px 5px 10px 3px rgba(117, 115, 115, 0.918); */
     transform: translateY(40px);
     transition: 0.5s all ease-in-out;
   }
 
   .intro-img {
+    margin-left: 450px;
     transform: translateY(80px);
     opacity: 0;
     transition: 0.5s all ease-in-out;
   }
 
   .intro-desc {
-    background-color: rgb(255, 213, 213);
     border-radius: 10px;
     position: relative;
-    bottom: 400px;
-    left: 645px;
-    box-shadow: 5px 5px 10px 3px rgba(117, 115, 115, 0.918);
+    left: 380px;
+    bottom: 10px;
     transform: translateY(40px);
     width: 1000px;
     height: 400px;
@@ -291,8 +259,8 @@ body {
   }
 
   .intro-content img {
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
     border-radius: 20px;
   }
 
@@ -300,8 +268,9 @@ body {
     width: 90%;
     font-size: 20px;
     margin: 20px;
+    text-align: center;
+    justify-content: center;
   }
-  /* --------------------book detail------------------ */
   /* --------------------book list------------------ */
   .container-book-list {
     width: 100%;
@@ -644,6 +613,10 @@ input{
     transition: all 1s;
 }
 
+.fa .fa-search {
+  background: #a483ff;
+}
+
 form:hover{
     width: 400px;
     cursor: pointer;
@@ -657,4 +630,75 @@ form:hover .fa{
     background: rgb(255, 213, 213);
     color: white;
 }
-  /* --------------------search form------------------ */
+/* --------------------search form------------------ */
+/* --------------------add to cart button------------------ */
+.btn:link,
+.btn:visited{
+  margin-top: 20px;
+  text-decoration: none;
+  text-transform:uppercase;
+  font-size: 18px;
+  position:relative;
+  top:0;
+  left:0;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display:inline-block;
+  transition: all .5s;
+  letter-spacing: 1px;
+}
+
+.btn-color{
+  background: rgb(255, 137, 137);
+}
+
+.btn:hover{
+   box-shadow:0px 10px 10px rgba(0,0,0,0.2);
+   transform : translateY(-3px);
+  letter-spacing: 5px;
+}
+
+.btn:active{
+  box-shadow:0px 5px 10px rgba(0,0,0,0.2);
+  transform:translateY(-1px);
+}
+
+.btn-bottom-animation-1{
+  animation:comeFromBottom 1s ease-out .8s;
+}
+
+.btn::after{
+  content:"";
+  text-decoration: none;
+  text-transform:uppercase;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  border-radius:100px;
+  display:inline-block;
+  z-index:-1;
+  transition: all .5s;
+}
+
+.btn-color::after {
+    background: rgb(255, 137, 137);
+}
+
+.btn-animation-1:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+@keyframes comeFromBottom{
+  0%{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+/* --------------------add to cart button------------------ */
