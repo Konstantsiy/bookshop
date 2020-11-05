@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  body{
+    min-height: 100vh;
+    background-color: #fff;
+  }
+
+  form {
+      position: relative;
+      margin-left: 200px;
+  }
+
+  .search-image {
+    justify-content: center;
+      z-index: -1;
+      position: relative;
+      margin-top: 0px;
+      margin-left: 600px;
+  }
+
+  .registr-form{
+    width: 360px;
+    height: 280px;
+    padding: 80px 40px;
+    border-radius: 10px;
+    margin-top: -90px;
+    margin-left:890px;
+    transform: translate(-50%,-50%);
+  }
+
+  .registr-form h1{
+      font-family: 'Kaushan Script', cursive;
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 60px;
+    position: relative;
+    top: 60px;
+  }
+
+  .txtb{
+    border-bottom: 2px solid #adadad;
+    position: relative;
+    margin: 30px 0;
+  }
+
+  .txtb label input{
+    font-size: 15px;
+    color: #333;
+    border: none;
+    width: 100%;
+    outline: none;
+    background: none;
+    padding: 0 5px;
+    height: 40px;
+  }
+
+  .txtb span::before{
+    content: attr(data-placeholder);
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: .5s;
+  }
+
+  .txtb span::after{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(120deg,#ffffff,#ff9f9f);
+    transition: .5s;
+  }
+
+  .focus + span::before{
+    top: -5px;
+  }
+
+  .registrbtn{
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: none;
+      background: linear-gradient(120deg,#ffffff,#dcff5e,#ffffff);
+    background-size: 200%;
+    color: #5283ff;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+      border-radius: 50px;
+      font-family: 'Kalam', cursive;
+      font-size: 20px;
+  }
+
+  .registrbtn:hover{
+    background-position: right;
+  }
+
+  .bottom-text{
+    margin-top: 60px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Kalam', cursive;
+  }

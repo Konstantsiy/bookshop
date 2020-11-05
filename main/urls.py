@@ -11,4 +11,5 @@ urlpatterns = [
     path('filter/<slug:slug>/', views.filter_by_genre, name='filter'),
     path('<slug:slug>/', views.BookDetailView.as_view(), name='book_detail'),
     path('add_to_cart/<slug:slug>/', views.AddToCartView.as_view(), name='add_to_cart'),
+    path('delete_from_cart/<slug:slug>/', views.DeleteFromCartView.as_view(), name='delete_from_cart'),
 ]

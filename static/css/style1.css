@@ -702,3 +702,9 @@ form:hover .fa{
   }
 }
 /* --------------------add to cart button------------------ */
+/* --------------------cart page------------------ */
+.delete-btn {
+  background-color: #ff7171;
+  border-radius: 10px;
+}
+/* --------------------cart page------------------ */

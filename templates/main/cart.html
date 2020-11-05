@@ -3,7 +3,32 @@
 {% load static %}
 {% load book_tag %}
 {% block content %}
-<div>
-
+<div class="cart-content">
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Cover</th>
+                <th scope="col">Price</th>
+                <th scope="col">Count</th>
+                <th scope="col">Total</th>
+                <tr></tr>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <th>{{ item.book.title }}</th>
+                    <td><img src="{{ item.book.image.url }}" alt="" style=""></td>
+                    <td>{{ item.book.price | floatformat:2 }} $</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.get_total }} $</td>
+                    <td><a href="{% url 'delete_from_cart' slug=item.book.url %}">
+                        <button class="delete-btn">Delete from Cart</button>
+                    </a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock content %}
