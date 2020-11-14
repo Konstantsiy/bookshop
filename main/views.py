@@ -50,14 +50,107 @@ def user_login(request):
     return render(request, 'account/login.html', {'form': form})
 
 
+class IteratorBase(object):
+    def first(self):
+        raise NotImplementedError()
+
+    def last(self):
+        raise NotImplementedError()
+
+    def next(self):
+        raise NotImplementedError()
+
+    def prev(self):
+        raise NotImplementedError()
+
+    def current_item(self):
+        raise NotImplementedError()
+
+    def is_done(self, index):
+        raise NotImplementedError()
+
+    def get_item(self, index):
+        raise NotImplementedError()
+
+
+class Iterator(IteratorBase):
+    def __init__(self, list_=None):
+        self._list = list_ or []
+        self._current = 0
+
+    def first(self):
+        return self._list[0]
+
+    def last(self):
+        return self._list[-1]
+
+    def current_item(self):
+        return self._list[self._current]
+
+    def is_done(self, index):
+        last_index = len(self._list) - 1
+        return 0 <= index <= last_index
+
+    def next(self):
+        self._current += 1
+        if not self.is_done(self._current):
+            self._current = 0
+        return self.current_item()
+
+    def prev(self):
+        self._current -= 1
+        if not self.is_done(self._current):
+            self._current = len(self._list) - 1
+        return self.current_item()
+
+    def get_item(self, index):
+        if not self.is_done(index):
+            raise IndexError('No item with index: %d' % index)
+        return self._list[index]
+
+
+class Memento(object):
+    def __init__(self, state):
+        self._state = state
+
+    def get_state(self):
+        return self._state
+
+
+class Caretaker(object):
+    def __init__(self):
+        self._memento = None
+
+    def get_memento(self):
+        return self._memento
+
+    def set_memento(self, memento):
+        self._memento = memento
+
+
+class Originator(object):
+    def __init__(self):
+        self._state = None
+
+    def set_state(self, state):
+        self._state = state
+
+    def get_state(self):
+        return self._state
+
+    def save_state(self):
+        return Memento(self._state)
+
+    def restore_state(self, memento):
+        self._state = memento.get_state()
+
+
 class GenreAuthor:
     def get_genres(self):
         return Genre.objects.all()
 
     def get_authors(self):
-        # return Book.objects.filter(draft=False).values_list('author__name')
         return Author.objects.all()
-        # return Book.objects.filter(draft=False).values('year')
 
 
 class BookView(GenreAuthor, ListView):
@@ -97,7 +190,7 @@ class AddReview(GenreAuthor, View):
 
 class AuthorView(DetailView):
     model = Author
-    template_name = 'main/author.html'
+    # template_name = 'main/author.html'
     slug_field = 'name'
 
 
@@ -111,14 +204,6 @@ class FilterBooksView(GenreAuthor, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-
-    # def get_queryset(self):
-    #     queryset = Book.objects.filter(
-    #         # Q(author__in=self.request.GET.getlist("slug")) |
-    #         Q(genre__in=self.request.GET.getlist("slug"))
-    #     )
-    #     print(queryset)
-    #     return queryset
 
 
 class Search(ListView):
@@ -146,11 +231,6 @@ class CartView(View):
         count = get_cart_items_count(request)
         context = {'items': items, 'order': order, 'order_items_count': count}
         return render(request, 'main/cart.html', context)
-        # books = Book.objects.filter(url=kwargs.get('slug'))
-        # total_price = 0
-        # for book in books:
-        #     total_price += book.price
-        # return render(request, 'main/cart.html', {'books': books, 'total_price': total_price})
 
 
 class AddToCartView(View):
@@ -184,15 +264,12 @@ class DeleteFromCartView(View):
     def get(self, request, *args, **kwargs):
         books_slug = kwargs.get('slug')
         book = Book.objects.get(url=books_slug)
-        print(book.title)
 
         if request.user.is_authenticated:
             customer = request.user.customer
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
-            # items = order.orderitem_set.filter(book=book).delete()
             order.orderitem_set.get(book=book).delete()
             items = order.orderitem_set.all()
-            print(items)
             return render(request, 'main/cart.html', {'order': order, 'items': items})
 
 

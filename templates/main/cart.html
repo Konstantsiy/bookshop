@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}your cart{% endblock title %}
+{% block title %}cart{% endblock title %}
 {% load static %}
 {% load book_tag %}
 {% block content %}
@@ -7,10 +7,8 @@
     <table class="cart-table">
         <thead>
             <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Cover</th>
-                <th scope="col">Price</th>
-                <th scope="col">Count</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Total</th>
                 <tr></tr>
             </tr>
@@ -18,17 +16,28 @@
         <tbody>
             {% for item in items %}
                 <tr>
-                    <th>{{ item.book.title }}</th>
-                    <td><img src="{{ item.book.image.url }}" alt="" style=""></td>
-                    <td>{{ item.book.price | floatformat:2 }} $</td>
+                    <td>
+                        <div class="product-info">
+                            <div class="compact">
+                                <img src="{{ item.book.image.url }}" alt="" class="product-image">
+                            </div>
+                            <div class="product-data compact">
+                                <p>{{ item.book.title }}</p>
+                                <p>{{ item.book.price }}</p>
+                                <p><a href="{% url 'delete_from_cart' slug=item.book.url %}">
+                                    <button class="delete-btn">Delete form Cart</button>
+                                </a></p>
+                            </div>
+                        </div>
+                    </td>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.get_total }} $</td>
-                    <td><a href="{% url 'delete_from_cart' slug=item.book.url %}">
-                        <button class="delete-btn">Delete from Cart</button>
-                    </a></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    <div class="checkout">
+        <a href="#"><button class="checkout-btn">Checkout</button></a>
+    </div>
 </div>
 {% endblock content %}

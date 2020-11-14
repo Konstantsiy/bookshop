@@ -703,6 +703,25 @@ form:hover .fa{
 }
 /* --------------------add to cart button------------------ */
 /* --------------------cart page------------------ */
+.cart-content {
+  position: relative;
+  top: 100px;
+  margin-bottom: 300px;
+}
+
+.col {
+  margin: 100px;
+}
+
+.product-image {
+  width: 30%;
+  border-radius: 20px;
+}
+
+.compact {
+  display: inline-block;
+}
+
 .delete-btn {
   background-color: #ff7171;
   border-radius: 10px;
