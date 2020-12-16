@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>checkout</title>
+    <link rel="stylesheet" href="/static/css/style_for_checkout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Rancho&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+     <div class="checkout-panel" style="border-radius: 10px;">
+        <div style="position: relative; margin-left: auto; margin-right: auto;">
+         <div class="panel-body"></div>
+          <div class="payment-method">
+            <label for="paypal" class="method paypal">
+              <img src="https://designmodo.com/demo/checkout-panel/img/paypal_logo.png"/>
+              <div class="radio-input" style="font-family: Rancho, cursive; font-size: 30px;">
+                Pay AU ${{ order.get_cart_total }} with PayPal
+              </div>
+            </label>
+          </div>
+          <div class="input-fields">
+            <div class="column-1">
+              <div>
+                    <label for="cardholder">Name</label>
+                    <input type="text" id="cardholder" />
+                    <label for="cardholder">Address</label>
+                    <input type="text" id="cardholder" />
+              </div>
+              <hr>
+              <div class="small-inputs">
+                <div>
+                  <label for="date">Valid date</label>
+                  <input type="text" id="date"/>
+                </div>
+                <div>
+                  <label for="verification">CVV / CVC *</label>
+                  <input type="password" id="verification"/>
+                </div>
+              </div>
+              <hr>
+              <div class="column-2" style="top: 50px;">
+                <div>
+                    <label for="cardnumber">Card Number</label>
+                    <input type="password" id="cardnumber"/>
+
+                    <span class="info">* CVV or CVC is the card
+                        security code, unique three digits number on
+                        the back of your card separate
+                        from its number.
+                    </span>
+                </div>
+              </div>
+
+              <div class="panel-footer" style="background-color: white;">
+                <button class="btn next-btn"><a href="{% url 'payment' %}">Pay</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cart-picture">
+            <img src="/static/images/pictures/cart.png" style="width: 100%; height: auto;">
+        </div>
+    </div>
+  </body>
+</html>

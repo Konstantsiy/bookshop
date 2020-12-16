@@ -128,7 +128,9 @@ class OrderItem(models.Model):
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
+    name = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=200, null=True)
     state = models.CharField(max_length=200, null=True)
-    zip_code = models.CharField(max_length=200, null=True)
+    cvv = models.CharField(max_length=200, null=True)
+    card_number = models.CharField(max_length=100, null=True)
     date_added = models.CharField(max_length=200, null=True)

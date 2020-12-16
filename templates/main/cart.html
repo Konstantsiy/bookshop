@@ -19,7 +19,8 @@
                     <td>
                         <div class="product-info">
                             <div class="compact">
-                                <img src="{{ item.book.image.url }}" alt="" class="product-image">
+                                <img src="{{ item.book.image.url }}" alt="" class="product-image"
+                                style="max-width: 100%; height: auto;">
                             </div>
                             <div class="product-data compact">
                                 <p>{{ item.book.title }}</p>
@@ -37,7 +38,7 @@
         </tbody>
     </table>
     <div class="checkout">
-        <a href="#"><button class="checkout-btn">Checkout</button></a>
+        <a href="{% url 'checkout' %}"><button class="checkout-btn">Checkout</button></a>
     </div>
 </div>
 {% endblock content %}

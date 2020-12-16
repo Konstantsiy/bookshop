@@ -1,6 +1,5 @@
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.base import View
@@ -190,7 +189,6 @@ class AddReview(GenreAuthor, View):
 
 class AuthorView(DetailView):
     model = Author
-    # template_name = 'main/author.html'
     slug_field = 'name'
 
 
@@ -239,8 +237,15 @@ class AddToCartView(View):
         book = Book.objects.get(url=book_slug)
 
         if request.user.is_authenticated:
-            customer = request.user.customer
-            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            user = request.user
+            _customer = None
+
+            try:
+                _customer = Customer.objects.get(user=user)
+            except Customer.DoesNotExist:
+                _customer = Customer(request.user.id)
+
+            order, created = Order.objects.get_or_create(customer=_customer, complete=False)
             order_item, created = OrderItem.objects.get_or_create(order=order, book=book)
 
             items = order.orderitem_set.all()
@@ -258,6 +263,20 @@ class AddToCartView(View):
                 order.save()
 
             return render(request, 'main/cart.html', {'order': order, 'items': items})
+
+
+class CheckoutView(View):
+    def get(self, request, *args, **kwargs):
+        customer = Customer.objects.get(user=request.user)
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        context = {'customer': customer, 'order': order, 'items': items}
+        return render(request, 'payment/checkout.html', context)
+
+
+class PaymentView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'main/home.html')
 
 
 class DeleteFromCartView(View):
